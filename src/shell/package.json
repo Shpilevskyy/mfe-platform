@@ -4,8 +4,8 @@
   "description": "",
   "main": "GithubAvatar.js",
   "scripts": {
-    "build": "tsc",
-    "start": "http-server ./src -p 3001"
+    "build": "tsc -w",
+    "start": "http-server ./src -o -p 3000"
   },
   "author": "",
   "license": "ISC",

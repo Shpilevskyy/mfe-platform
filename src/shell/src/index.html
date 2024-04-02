@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Component Example</title>
+  <script type="module" src="MicroFrontendMenu.js"></script>
+  <script type="module">
+      import {microFrontendConfig} from './micro-frontend-config.js'
+
+      document.querySelector('micro-frontend-menu').setConfig(microFrontendConfig)
+  </script>
+</head>
+<body>
+<aside>
+  <micro-frontend-menu></micro-frontend-menu>
+</aside>
+<main>
+  <!--<micro-frontend-content></micro-frontend-content>-->
+</main>
+</body>
+</html>
