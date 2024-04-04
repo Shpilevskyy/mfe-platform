@@ -1,5 +1,6 @@
-import {MicroFrontendConfigType} from "./mfe-config";
+import {MicroFrontendConfigType} from "./mfe-config.js";
 
+console.log('MfeMenu loaded')
 export class MfeMenu extends HTMLElement {
     private config: Array<MicroFrontendConfigType> = [];
 
@@ -18,7 +19,7 @@ export class MfeMenu extends HTMLElement {
 
     render() {
         const list = this.config.map((config) => {
-            return `<li><a href="${config.host}">${config.name}</a></li>`;
+            return `<li><a href="/#${config.path}">${config.name}</a></li>`;
         })
 
         this.innerHTML = `
@@ -37,7 +38,5 @@ export class MfeMenu extends HTMLElement {
         `;
     }
 }
-
-console.log(1)
 
 customElements.define('mfe-menu', MfeMenu);

@@ -1,9 +1,9 @@
 export class GithubAvatar extends HTMLImageElement {
     username: string;
 
-    constructor() {
+    constructor(username: string) {
         super();
-        this.username = this.getAttribute('username') || '';
+        this.username = username || this.getAttribute('username') || '';
     }
 
     connectedCallback() {
@@ -17,5 +17,7 @@ export class GithubAvatar extends HTMLImageElement {
         this.src = data.avatar_url;
     }
 }
+
+export default GithubAvatar;
 
 customElements.define('github-avatar', GithubAvatar, {extends: 'img'});

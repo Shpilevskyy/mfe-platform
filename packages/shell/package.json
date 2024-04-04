@@ -2,14 +2,16 @@
   "name": "shell",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
-    "build": "tsc",
-    "start": "http-server ./src -o -p 3000"
+    "build": "tsc -w",
+    "start": "http-server ./src -o -p 3000 --cors"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "http-server": "^14.1.1",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "universal-router": "^9.2.0"
   }
 }

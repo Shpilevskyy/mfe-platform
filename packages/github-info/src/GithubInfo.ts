@@ -1,16 +1,12 @@
 export class GithubInfo extends HTMLElement {
     username: string;
 
-    constructor() {
+    constructor(username: string) {
         super();
-        this.username = this.getAttribute('username') || '';
+        this.username = username || this.getAttribute('username') || '';
     }
 
-    connectedCallback() {
-        this.render();
-    }
-
-    async render() {
+    async connectedCallback() {
         const response = await fetch(`https://api.github.com/users/${this.username}`);
         const data = await response.json();
         this.innerHTML = `
@@ -18,5 +14,7 @@ export class GithubInfo extends HTMLElement {
         `;
     }
 }
+
+export default GithubInfo;
 
 customElements.define('github-info', GithubInfo);
