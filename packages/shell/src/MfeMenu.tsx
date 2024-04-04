@@ -1,28 +1,28 @@
-import {MicroFrontendConfigType} from "./mfe-config.js";
+import { MicroFrontendConfigType } from "./mfe-config.js";
 
-console.log('MfeMenu loaded')
+console.log("MfeMenu loaded");
 export class MfeMenu extends HTMLElement {
-    private config: Array<MicroFrontendConfigType> = [];
+  private config: Array<MicroFrontendConfigType> = [];
 
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    connectedCallback() {
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    setConfig(config: Array<MicroFrontendConfigType>) {
-        this.config = config;
-        this.render();
-    }
+  setConfig(config: Array<MicroFrontendConfigType>) {
+    this.config = config;
+    this.render();
+  }
 
-    render() {
-        const list = this.config.map((config) => {
-            return `<li><a href="/#${config.path}">${config.name}</a></li>`;
-        })
+  render() {
+    const list = this.config.map((config) => {
+      return `<li><a href="/#${config.path}">${config.name}</a></li>`;
+    });
 
-        this.innerHTML = `
+    this.innerHTML = `
           <style>
             :host {
               display: block;
@@ -33,10 +33,10 @@ export class MfeMenu extends HTMLElement {
           </style>
           <h1>Micro Frontend Menu</h1>
           <ul>
-            ${list.join('')}
+            ${list.join("")}
           </ul>
         `;
-    }
+  }
 }
 
-customElements.define('mfe-menu', MfeMenu);
+customElements.define("mfe-menu", MfeMenu);

@@ -1,23 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Web Component Example</title>
-  <script type="module" src="./MfeMenu.js"></script>
-  <script type="module" src="./MfeRouter.js"></script>
-  <script type="module">
-      import {mfeConfig} from './mfe-config.js'
+  <head>
+    <meta charset="UTF-8" />
+    <title>Web Component Example</title>
+    <script type="module" src="./MfeMenu.js"></script>
+    <script type="module" src="./MfeRouter.js"></script>
+    <script type="module">
+      import { mfeConfig } from "./mfe-config.js";
 
-      document.querySelector('mfe-menu').setConfig(mfeConfig)
-      document.querySelector('mfe-router').setAttribute("routes", JSON.stringify(mfeConfig))
-  </script>
-</head>
-<body>
-<aside>
-  <mfe-menu></mfe-menu>
-</aside>
-<main>
-  <mfe-router></mfe-router>
-</main>
-</body>
+      document.querySelector("mfe-menu").setConfig(mfeConfig);
+      document
+        .querySelector("mfe-router")
+        .setAttribute("routes", JSON.stringify(mfeConfig));
+    </script>
+  </head>
+  <body>
+    <aside>
+      <mfe-menu></mfe-menu>
+    </aside>
+    <main>
+      <mfe-router></mfe-router>
+    </main>
+  </body>
 </html>
