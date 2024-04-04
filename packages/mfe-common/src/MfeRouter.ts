@@ -1,4 +1,8 @@
-import { MicroFrontendConfigType } from "./mfe-config";
+export type MicroFrontendConfigType = {
+  name: string;
+  host: string;
+  path: string;
+};
 
 class HashRouter extends HTMLElement {
   private routes: Array<MicroFrontendConfigType> = [];

@@ -4,16 +4,14 @@ console.log("MfeMenu loaded");
 export class MfeMenu extends HTMLElement {
   private config: Array<MicroFrontendConfigType> = [];
 
-  constructor() {
+  constructor(config: Array<MicroFrontendConfigType>) {
     super();
+
+    console.log("MfeMenu loaded", config);
+    this.config = config;
   }
 
   connectedCallback() {
-    this.render();
-  }
-
-  setConfig(config: Array<MicroFrontendConfigType>) {
-    this.config = config;
     this.render();
   }
 
@@ -23,14 +21,6 @@ export class MfeMenu extends HTMLElement {
     });
 
     this.innerHTML = `
-          <style>
-            :host {
-              display: block;
-              padding: 16px;
-              color: white;
-              background-color: darkblue;
-            }
-          </style>
           <h1>Micro Frontend Menu</h1>
           <ul>
             ${list.join("")}

@@ -1,13 +1,13 @@
 {
-  "name": "home-assignment",
+  "name": "mfe-common",
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "module": "NodeNext",
+  "main": "src/index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w",
-    "start": "http-server -p 3001 --cors"
+    "dev": "tsc -w"
   },
   "author": "",
   "license": "ISC",
