@@ -1,4 +1,4 @@
-export class GithubAvatar extends HTMLImageElement {
+export class GithubInfo extends HTMLElement {
     username: string;
 
     constructor() {
@@ -7,15 +7,16 @@ export class GithubAvatar extends HTMLImageElement {
     }
 
     connectedCallback() {
-        this.fetchAvatar();
+        this.render();
     }
 
-    async fetchAvatar() {
+    async render() {
         const response = await fetch(`https://api.github.com/users/${this.username}`);
         const data = await response.json();
-        console.log(data)
-        this.src = data.avatar_url;
+        this.innerHTML = `
+            <h1>${data.name}</h1>
+        `;
     }
 }
 
-customElements.define('github-avatar', GithubAvatar, {extends: 'img'});
+customElements.define('github-info', GithubInfo);

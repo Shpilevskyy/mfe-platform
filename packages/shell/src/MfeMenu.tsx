@@ -1,6 +1,6 @@
-import {MicroFrontendConfigType} from "./micro-frontend-config";
+import {MicroFrontendConfigType} from "./mfe-config";
 
-export class MicroFrontendMenu extends HTMLElement {
+export class MfeMenu extends HTMLElement {
     private config: Array<MicroFrontendConfigType> = [];
 
     constructor() {
@@ -40,4 +40,4 @@ export class MicroFrontendMenu extends HTMLElement {
 
 console.log(1)
 
-customElements.define('micro-frontend-menu', MicroFrontendMenu);
+customElements.define('mfe-menu', MfeMenu);

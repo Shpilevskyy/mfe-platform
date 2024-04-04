@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Web Component Example</title>
-  <script type="module" src="MicroFrontendMenu.js"></script>
+  <script type="module" src="MfeMenu.js"></script>
   <script type="module">
-      import {microFrontendConfig} from './micro-frontend-config.js'
+      import {mfeConfig} from './mfe-config.js'
 
-      document.querySelector('micro-frontend-menu').setConfig(microFrontendConfig)
+      document.querySelector('mfe-menu').setConfig(mfeConfig)
+      document.querySelector('mfe-router').setConfig(mfeConfig)
   </script>
 </head>
 <body>
 <aside>
-  <micro-frontend-menu></micro-frontend-menu>
+  <mfe-menu></mfe-menu>
+  <mfe-router></mfe-router>
 </aside>
 <main>
   <!--<micro-frontend-content></micro-frontend-content>-->
