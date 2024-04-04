@@ -15,7 +15,7 @@ export class GithubAvatar extends HTMLImageElement {
       `https://api.github.com/users/${this.username}`,
     );
     const data = await response.json();
-    console.log(data);
+
     this.src = data.avatar_url;
   }
 }

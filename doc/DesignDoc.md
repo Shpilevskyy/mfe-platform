@@ -8,6 +8,7 @@ Build a micro-frontend platform
 - **main area**: where the MFE renders to
 - **Routing logic:** such that the MFE can be switched out without reloading.
 
+
 ## TODO
 
 ### Create at least two micro-frontends you can demonstrate switching between them.
@@ -28,6 +29,7 @@ Build a micro-frontend platform
 
 ### Feel free to try approaches which would be impractical in practice, but could be interesting from a theoretical perspective
 
+
 ## Problems to solve
 
 ### What if we completely forego build tooling?
@@ -47,24 +49,19 @@ Build a micro-frontend platform
 - Each MFE could have its own test suite.
 
 ### Are there up and coming options for build tooling that we can consider?
-
 - https://bit.dev/
 - https://webpack.js.org/concepts/module-federation/
 - https://vitejs.dev/
-- https://lit.dev/ (Old Polymer)
 
 ### Is a view library (e.g. React) really necessary?
-
 - No, but each MFE could use its own view library.
 
 ### Could be Web components be applied?
-
 - https://developer.mozilla.org/en-US/docs/Web/API/Web_components
 
 ### Can we isolate the CSS of the different MFEs somehow?
 
 ### How to prevent CSS from leaking from one MFE to anotther?
-
 Shadow DOM? CSS Modules? CSS-in-JS?
 
 # Research

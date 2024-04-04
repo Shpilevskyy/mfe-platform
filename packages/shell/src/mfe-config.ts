@@ -6,9 +6,9 @@ export type MicroFrontendConfigType = {
 
 export const mfeConfig: MicroFrontendConfigType[] = [
   {
-    path: "github-avatar",
-    name: "github-avatar",
-    host: "http://localhost:3001/src/GithubAvatar.js",
+    path: "home-assignment",
+    name: "home-assignment",
+    host: "http://localhost:3001/src/HomeAssignment.js",
   },
   {
     path: "github-info",

@@ -12,8 +12,6 @@ class HashRouter extends HTMLElement {
     if (name === "routes") {
       this.routes = JSON.parse(newValue);
 
-      console.log(this.routes);
-
       this.setupRouter();
     }
   }
@@ -30,8 +28,6 @@ class HashRouter extends HTMLElement {
 
       return map;
     }, {});
-
-    console.log("routeMap", this.routeMap);
   }
 
   async loadRoute() {
@@ -47,7 +43,7 @@ class HashRouter extends HTMLElement {
       this.innerHTML = "";
       this.appendChild(component);
     } else {
-      this.innerHTML = "404 Not Found";
+      this.innerHTML = "";
     }
   }
 }

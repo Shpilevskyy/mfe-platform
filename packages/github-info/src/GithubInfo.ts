@@ -1,3 +1,7 @@
+import "./GithubAvatar.js";
+import "./GithubUseName.js";
+
+// layout for the github-avatar and github-user-name component
 export class GithubInfo extends HTMLElement {
   username: string;
 
@@ -7,13 +11,15 @@ export class GithubInfo extends HTMLElement {
   }
 
   async connectedCallback() {
-    const response = await fetch(
-      `https://api.github.com/users/${this.username}`,
-    );
-    const data = await response.json();
     this.innerHTML = `
-            <h1>${data.name}</h1>
-        `;
+      <img is="github-avatar" alt="${this.username}" username="${this.username}"></img>
+      <github-user-name username="${this.username}"></github-user-name>
+      <style>
+        h1 {
+            color: red;
+        }
+      </style>
+    `;
   }
 }
 
