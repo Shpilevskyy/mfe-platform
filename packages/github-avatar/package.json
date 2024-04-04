@@ -2,10 +2,9 @@
   "name": "github-avatar",
   "version": "1.0.0",
   "description": "",
-  "main": "GithubAvatar.js",
   "scripts": {
-    "build": "tsc -w",
-    "start": "http-server ./src -o -p 3000"
+    "build": "tsc",
+    "start": "http-server ./src -p 3001"
   },
   "author": "",
   "license": "ISC",

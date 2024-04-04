@@ -39,6 +39,7 @@ Build a micro-frontend platform
 * https://bit.dev/
 * https://webpack.js.org/concepts/module-federation/
 * https://vitejs.dev/
+* https://lit.dev/ (Old Polymer)
 
 ### Is a view library (e.g. React) really necessary?
 * No, but each MFE could use its own view library.
@@ -58,7 +59,6 @@ iframe-based, web-component-based, Framework-based (Rect, Vue, etc.), Webpack Mo
 
 ## Shell application
 * Responsible for loading and orchestrating the MFEs. Shared data and state management (Custom events).
-* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap ?
 
 ## How to integrate Micro Frontends?
 * Build-Time integration (Old way)
@@ -71,5 +71,17 @@ iframe-based, web-component-based, Framework-based (Rect, Vue, etc.), Webpack Mo
 * Shadow DOM: Functional tests selectors, css variables, etc. (Creating shadow DOM only at the micro frontend container level, not for each and every element)
 
 
-# Resources
+# Read esources
 * https://medium.com/@mmeraj/mastering-micro-frontends-a-web-component-adventure-and-the-lessons-learned-e2584a67dc1f
+* https://microfrontend.dev/
+
+## Web resources
+* https://developer.mozilla.org/en-US/docs/Web/API/CustomStateSet
+* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap
+
+# TODO
+* Will there be common components?
+* How can routing be done both inside and outside?
+  * Vaadin Route
+  * universal-router
+* Will there be some kind of state exchange, such as a shopping cart or a logged in user?
