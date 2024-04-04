@@ -1,14 +1,22 @@
 import { MicroFrontendConfigType } from "./mfe-config.js";
 
-console.log("MfeMenu loaded");
 export class MfeMenu extends HTMLElement {
   private config: Array<MicroFrontendConfigType> = [];
 
-  constructor(config: Array<MicroFrontendConfigType>) {
+  constructor() {
     super();
+  }
 
-    console.log("MfeMenu loaded", config);
-    this.config = config;
+  static get observedAttributes() {
+    return ["config"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "config") {
+      this.config = JSON.parse(newValue);
+
+      this.render();
+    }
   }
 
   connectedCallback() {

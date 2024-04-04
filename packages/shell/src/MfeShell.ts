@@ -13,16 +13,25 @@ export class MfeShell extends HTMLElement {
   }
 
   render() {
-    console.log("MfeShell loaded", mfeConfig);
-
     this.innerHTML = `
         <aside style="padding: 20px">
-          <mfe-menu config="${mfeConfig}"></mfe-menu>
+          <mfe-menu></mfe-menu>
         </aside>
         <main style="padding: 20px">
-          <mfe-router config="${mfeConfig}"></mfe-router>
+          <mfe-router></mfe-router>
         </main>
     `;
+
+    this.provideContext();
+  }
+
+  provideContext() {
+    document
+      .querySelector("mfe-menu")
+      .setAttribute("config", JSON.stringify(mfeConfig));
+    document
+      .querySelector("mfe-router")
+      .setAttribute("routes", JSON.stringify(mfeConfig));
   }
 }
 

@@ -2,6 +2,8 @@
   "name": "github-info",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
+  "module": "NodeNext",
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",

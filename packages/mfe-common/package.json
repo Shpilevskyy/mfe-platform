@@ -7,7 +7,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "start": "http-server -p 3003 --cors"
   },
   "author": "",
   "license": "ISC",

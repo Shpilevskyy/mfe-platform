@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "concurrently \"npm run start --workspace=home-assignment\" \"npm run start --workspace=github-info\" \"npm run start --workspace=shell\"",
+    "start": "concurrently \"npm run start --workspace=mfe-common\" \"npm run start --workspace=home-assignment\" \"npm run start --workspace=github-info\" \"npm run start --workspace=shell\"",
     "build": "concurrently \"npm run build --workspace=mfe-common\" \"npm run build --workspace=home-assignment\" \"npm run build --workspace=github-info\" \"npm run build --workspace=shell\"",
     "dev": "concurrently \"npm run dev --workspace=mfe-common\" \"npm run dev --workspace=home-assignment\" \"npm run dev --workspace=github-info\" \"npm run dev --workspace=shell\""
   },
