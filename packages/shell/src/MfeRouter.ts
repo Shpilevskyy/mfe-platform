@@ -13,6 +13,7 @@ class HashRouter extends HTMLElement {
       this.routes = JSON.parse(newValue);
 
       this.setupRouter();
+      this.loadRoute();
     }
   }
 

@@ -3,6 +3,6 @@
     "target": "ESNext",
     "module": "ESNext",
     "baseUrl": "src",
-    "moduleResolution": "Classic"
+    "moduleResolution": "NodeNext"
   }
 }

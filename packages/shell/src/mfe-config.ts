@@ -6,7 +6,7 @@ export type MicroFrontendConfigType = {
 
 export const mfeConfig: MicroFrontendConfigType[] = [
   {
-    path: "home-assignment",
+    path: "",
     name: "home-assignment",
     host: "http://localhost:3001/src/HomeAssignment.js",
   },
