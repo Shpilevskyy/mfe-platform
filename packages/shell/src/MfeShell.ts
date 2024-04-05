@@ -22,10 +22,10 @@ export class MfeShell extends HTMLElement {
         </main>
     `;
 
-    this.provideContext();
+    this.provideConfig();
   }
 
-  provideContext() {
+  provideConfig() {
     document
       .querySelector("mfe-menu")
       .setAttribute("config", JSON.stringify(mfeConfig));

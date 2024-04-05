@@ -1,19 +1,33 @@
 import "./GithubAvatar.js";
 import "./GithubUseName.js";
+import { MfeContext, MfeStoreType } from "mfe-common";
 
-// layout for the github-avatar and github-user-name component
 export class GithubInfo extends HTMLElement {
-  username: string;
+  private context: MfeContext;
 
-  constructor(username: string) {
+  constructor() {
     super();
-    this.username = username || this.getAttribute("username") || "";
+
+    this.context = new MfeContext();
+    this.context.subscribe(this.render.bind(this));
   }
 
-  async connectedCallback() {
+  connectedCallback() {
+    this.render(this.context.store);
+  }
+
+  render(store: MfeStoreType) {
+    console.log("render", store);
+    if (!this.context.store.githubUsername) {
+      this.innerHTML =
+        "<h1>Please provide a username of any GitHub account to be able to render his information in home page</h1>";
+
+      return;
+    }
     this.innerHTML = `
-      <img is="github-avatar" alt="${this.username}" username="${this.username}"></img>
-      <github-user-name username="${this.username}"></github-user-name>
+      <h1>Information about ${this.context.store.githubUsername} user</h1>
+      <img is="github-avatar" alt="${store.githubUsername}" username="${store.githubUsername}"></img>
+      <github-user-name username="${store.githubUsername}"></github-user-name>
       <style>
         h1 {
             color: red;
