@@ -6,11 +6,7 @@ export class GithubAvatar extends HTMLImageElement {
     this.username = username || this.getAttribute("username") || "";
   }
 
-  connectedCallback() {
-    this.fetchAvatar();
-  }
-
-  async fetchAvatar() {
+  async connectedCallback() {
     const response = await fetch(
       `https://api.github.com/users/${this.username}`,
     );

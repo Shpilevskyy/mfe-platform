@@ -1,56 +1,58 @@
-export type MicroFrontendConfigType = {
-  name: string;
-  host: string;
-  path: string;
-};
-
-class HashRouter extends HTMLElement {
-  private routes: Array<MicroFrontendConfigType> = [];
-  private routeMap: any = {};
-
+class MfeRoute extends HTMLElement {
   static get observedAttributes() {
-    return ["routes"];
+    return ["path", "component", "host"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === "routes") {
-      this.routes = JSON.parse(newValue);
-
-      this.setupRouter();
-      this.loadRoute();
-    }
+    this[name] = newValue;
   }
+}
+
+customElements.define("mfe-route", MfeRoute);
+
+class MfeRouter extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  get routes() {
+    return Array.from(this.querySelectorAll("mfe-route"))
+      .filter((node) => node.parentNode === this)
+      .map((r) => ({
+        path: r.getAttribute("path"),
+        host: r.getAttribute("host"),
+        component: r.getAttribute("component"),
+      }));
+  }
+
+  get outlet() {
+    return this.querySelector("mfe-outlet");
+  }
+
+  _handlePopstate = () => {
+    this.render();
+  };
 
   connectedCallback() {
-    window.addEventListener("hashchange", () => this.loadRoute());
-
-    this.loadRoute();
+    window.addEventListener("popstate", this._handlePopstate);
+    this.render();
   }
 
-  setupRouter() {
-    this.routeMap = this.routes.reduce((map, route) => {
-      map[route.path] = route.host;
-
-      return map;
-    }, {});
+  disconnectedCallback() {
+    window.removeEventListener("popstate", this._handlePopstate);
   }
 
-  async loadRoute() {
-    const path = window.location.hash.slice(1); // remove the '#' symbol
-    const componentPath = this.routeMap[path];
+  render() {
+    const route = this.routes.find(
+      (r) => r.path === window.location.hash.replace("#", ""),
+    );
 
-    if (componentPath) {
-      // load component from the server
-      const module = await import(componentPath);
-      const component = new module.default("Shpilevskyy");
-
-      // clear the previous content
-      this.innerHTML = "";
-      this.appendChild(component);
-    } else {
-      this.innerHTML = "";
+    if (route) {
+      import(route.host).then(() => {
+        this.outlet.innerHTML = `<${route.component}></${route.component}>`;
+      });
     }
   }
 }
 
-customElements.define("mfe-router", HashRouter);
+customElements.define("mfe-router", MfeRouter);

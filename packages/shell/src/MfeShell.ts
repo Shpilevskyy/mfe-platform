@@ -15,23 +15,23 @@ export class MfeShell extends HTMLElement {
   render() {
     this.innerHTML = `
         <aside style="padding: 20px">
-          <mfe-menu></mfe-menu>
+          <ul>
+            <li>
+              <a href="#">Home Assignment</a>
+            </li>
+            <li>
+              <a href="#github-info">GitHub User info</a>
+            </li>
+          </ul>
         </aside>
         <main style="padding: 20px">
-          <mfe-router></mfe-router>
+          <mfe-router>
+            <mfe-route path="" component="home-assignment" host="http://localhost:3001/src/HomeAssignment.js"></mfe-route>
+            <mfe-route path="github-info" component="github-info" host="http://localhost:3002/src/GithubInfo.js"></mfe-route>
+            <mfe-outlet></mfe-outlet>
+          </mfe-router>
         </main>
     `;
-
-    this.provideConfig();
-  }
-
-  provideConfig() {
-    document
-      .querySelector("mfe-menu")
-      .setAttribute("config", JSON.stringify(mfeConfig));
-    document
-      .querySelector("mfe-router")
-      .setAttribute("routes", JSON.stringify(mfeConfig));
   }
 }
 

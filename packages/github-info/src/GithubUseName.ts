@@ -12,8 +12,8 @@ export class GithubUseName extends HTMLElement {
     );
     const data = await response.json();
     this.innerHTML = `
-            <h1>${data.name}</h1>
-        `;
+        <h1>${data.name}</h1>
+    `;
   }
 }
 
