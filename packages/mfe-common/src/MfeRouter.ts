@@ -8,7 +8,9 @@ class MfeRoute extends HTMLElement {
   }
 }
 
-customElements.define("mfe-route", MfeRoute);
+if (!customElements.get("mfe-route")) {
+  customElements.define("mfe-route", MfeRoute);
+}
 
 class MfeRouter extends HTMLElement {
   constructor() {
@@ -56,4 +58,6 @@ class MfeRouter extends HTMLElement {
   }
 }
 
-customElements.define("mfe-router", MfeRouter);
+if (!customElements.get("mfe-router")) {
+  customElements.define("mfe-router", MfeRouter);
+}

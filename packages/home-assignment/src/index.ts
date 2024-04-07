@@ -1,1 +1,1 @@
-export * from "./HomeAssignment.ts";
+export * from "./HomeAssignment.js";

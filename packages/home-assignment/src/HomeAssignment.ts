@@ -18,4 +18,6 @@ export class HomeAssignment extends HTMLElement {
 
 export default HomeAssignment;
 
-customElements.define("home-assignment", HomeAssignment);
+if (!customElements.get("home-assignment")) {
+  customElements.define("home-assignment", HomeAssignment);
+}
