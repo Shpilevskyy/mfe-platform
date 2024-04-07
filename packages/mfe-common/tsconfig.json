@@ -4,6 +4,7 @@
     "module": "NodeNext",
     "baseUrl": "src",
     "moduleResolution": "NodeNext",
-    "outDir": "dist"
+    "outDir": "dist",
+    "include": ["src/**/*", "mfe-common.d.ts"]
   }
 }

@@ -48,6 +48,10 @@ export class GithubUser extends HTMLElement {
   connectedCallback() {
     this.render(this.context.store);
   }
+
+  disconnectedCallback() {
+    this.context.unsubscribe(this.render.bind(this));
+  }
 }
 
 export default GithubUser;

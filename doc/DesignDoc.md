@@ -60,7 +60,6 @@ Build a micro-frontend platform
 - https://developer.mozilla.org/en-US/docs/Web/API/Web_components
 
 ### Can we isolate the CSS of the different MFEs somehow?
-
 ### How to prevent CSS from leaking from one MFE to anotther?
 Shadow DOM? CSS Modules? CSS-in-JS?
 
@@ -85,21 +84,3 @@ iframe-based, web-component-based, Framework-based (Rect, Vue, etc.), Webpack Mo
 
 - Code duplication (Move shared code to a shared library)
 - Shadow DOM: Functional tests selectors, css variables, etc. (Creating shadow DOM only at the micro frontend container level, not for each and every element)
-
-# Read esources
-
-- https://medium.com/@mmeraj/mastering-micro-frontends-a-web-component-adventure-and-the-lessons-learned-e2584a67dc1f
-- https://microfrontend.dev/
-
-## Web resources
-
-- https://developer.mozilla.org/en-US/docs/Web/API/CustomStateSet
-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap
-
-# TODO
-
-- Will there be common components?
-- How can routing be done both inside and outside?
-  - Vaadin Route
-  - universal-router
-- Will there be some kind of state exchange, such as a shopping cart or a logged in user?
