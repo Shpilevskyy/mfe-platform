@@ -9,19 +9,41 @@ export const MfeStoreDefault: MfeStoreType = {
 export const MfeStoreStorageKey = "mfe-store";
 
 export class MfeContext {
+  private static instance: MfeContext;
   store: MfeStoreType = MfeStoreDefault;
+  subscribers: Array<(context: MfeStoreType) => void> = [];
 
-  constructor() {
+  private constructor() {
     const store = localStorage.getItem(MfeStoreStorageKey);
 
     if (store) {
       this.store = JSON.parse(store);
     }
+
+    window.addEventListener("storage", this.handleStorageEvent);
   }
+
+  public static getInstance(): MfeContext {
+    if (!MfeContext.instance) {
+      MfeContext.instance = new MfeContext();
+    }
+
+    return MfeContext.instance;
+  }
+
+  private handleStorageEvent = (event: StorageEvent) => {
+    if (event.key === MfeStoreStorageKey) {
+      const store = event.newValue ? JSON.parse(event.newValue) : this.store;
+
+      this.subscribers.forEach((callback) => callback(store));
+    }
+  };
 
   dispatch = (newContext: MfeStoreType = {}) => {
     this.store = { ...this.store, ...newContext };
+
     localStorage.setItem(MfeStoreStorageKey, JSON.stringify(this.store));
+
     window.dispatchEvent(
       new StorageEvent("storage", {
         key: MfeStoreStorageKey,
@@ -31,12 +53,12 @@ export class MfeContext {
   };
 
   subscribe = (callback: (context: MfeStoreType) => void) => {
-    callback(this.store);
+    this.subscribers.push(callback);
+  };
 
-    window.addEventListener("storage", (event) => {
-      if (event.key === MfeStoreStorageKey) {
-        callback(event.newValue ? JSON.parse(event.newValue) : this.store);
-      }
-    });
+  unsubscribe = (callback: (context: MfeStoreType) => void) => {
+    this.subscribers = this.subscribers.filter(
+      (subscriber) => subscriber !== callback,
+    );
   };
 }

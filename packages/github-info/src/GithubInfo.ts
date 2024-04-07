@@ -8,7 +8,7 @@ export class GithubInfo extends HTMLElement {
   constructor() {
     super();
 
-    this.context = new MfeContext();
+    this.context = MfeContext.getInstance();
   }
 
   onInputChange(event: Event) {

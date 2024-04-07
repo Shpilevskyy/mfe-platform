@@ -52,7 +52,7 @@ class MfeRouter extends HTMLElement {
 
     if (route) {
       import(route.host).then(() => {
-        this.outlet.innerHTML = `<${route.component}></${route.component}>`;
+        this.outlet.shadowRoot.innerHTML = `<${route.component}></${route.component}>`;
       });
     }
   }
@@ -60,4 +60,15 @@ class MfeRouter extends HTMLElement {
 
 if (!customElements.get("mfe-router")) {
   customElements.define("mfe-router", MfeRouter);
+}
+
+export class MfeOutlet extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+}
+
+if (!customElements.get("mfe-outlet")) {
+  customElements.define("mfe-outlet", MfeOutlet);
 }

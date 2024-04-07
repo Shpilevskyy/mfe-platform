@@ -22,6 +22,11 @@ export class GithubStatus extends HTMLElement {
       <h1>Status: ${data.status.description}</h1>
       <p>Indicator: ${data.status.indicator}</p>
       <p>Time zone: ${data.page.time_zone}</p>
+      <style>
+        h1 {
+            color: green;
+        }   
+      </style>
     `;
   }
 }

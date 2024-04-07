@@ -1,4 +1,5 @@
 import { MfeContext, MfeStoreType } from "mfe-common";
+import { token } from "../dist/token.js";
 
 export class GithubUser extends HTMLElement {
   private context: MfeContext;
@@ -6,17 +7,16 @@ export class GithubUser extends HTMLElement {
   constructor() {
     super();
 
-    this.context = new MfeContext();
+    this.context = MfeContext.getInstance();
     this.context.subscribe(this.render.bind(this));
   }
 
   async getGithubUser(username: string) {
-    // To prevent rate limit
-    if (window.localStorage.getItem(username)) {
-      return JSON.parse(window.localStorage.getItem(username));
-    }
-
-    const response = await fetch(`https://api.github.com/users/${username}`);
+    const response = await fetch(`https://api.github.com/users/${username}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
     const data = await response.json();
 
     window.localStorage.setItem(username, JSON.stringify(data));
@@ -37,7 +37,16 @@ export class GithubUser extends HTMLElement {
     this.innerHTML = `
         <h1>${data.name}</h1>
         <img src="${data.avatar_url}" alt="${data.name}" />
+        <style>
+          h1 {
+              color: gold;
+          }   
+      </style>
     `;
+  }
+
+  connectedCallback() {
+    this.render(this.context.store);
   }
 }
 
