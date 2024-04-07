@@ -43,9 +43,10 @@ class MfeRouter extends HTMLElement {
   }
 
   render() {
-    const route = this.routes.find(
-      (r) => r.path === window.location.hash.replace("#", ""),
-    );
+    const path = window.location.hash.length
+      ? window.location.hash.replace("#", "/")
+      : "/";
+    const route = this.routes.find((r) => path.startsWith(r.path));
 
     if (route) {
       import(route.host).then(() => {

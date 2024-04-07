@@ -22,6 +22,12 @@ export class MfeContext {
   dispatch = (newContext: MfeStoreType = {}) => {
     this.store = { ...this.store, ...newContext };
     localStorage.setItem(MfeStoreStorageKey, JSON.stringify(this.store));
+    window.dispatchEvent(
+      new StorageEvent("storage", {
+        key: MfeStoreStorageKey,
+        newValue: JSON.stringify(this.store),
+      }),
+    );
   };
 
   subscribe = (callback: (context: MfeStoreType) => void) => {
@@ -29,7 +35,7 @@ export class MfeContext {
 
     window.addEventListener("storage", (event) => {
       if (event.key === MfeStoreStorageKey) {
-        callback(this.store);
+        callback(event.newValue ? JSON.parse(event.newValue) : this.store);
       }
     });
   };

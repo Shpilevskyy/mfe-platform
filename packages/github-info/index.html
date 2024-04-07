@@ -2,10 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Web Component Example</title>
-    <script type="module" src="./src/GithubInfo.js"></script>
+    <title>GitHub Info MFE</title>
+    <script type="importmap">
+      { "imports": {
+          "mfe-common": "http://localhost:3003/src/index.js"
+      } }
+    </script>
+    <script type="module" src="./dist/GithubInfo.js"></script>
   </head>
   <body>
-    <github-info username="Shpilevskyy"></github-info>
+    <github-info></github-info>
   </body>
 </html>
