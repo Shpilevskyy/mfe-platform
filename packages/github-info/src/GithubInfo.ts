@@ -52,4 +52,6 @@ export class GithubInfo extends HTMLElement {
 
 export default GithubInfo;
 
-customElements.define("github-info", GithubInfo);
+if (!customElements.get("github-info")) {
+  customElements.define("github-info", GithubInfo);
+}

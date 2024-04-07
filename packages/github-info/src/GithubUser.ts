@@ -43,4 +43,6 @@ export class GithubUser extends HTMLElement {
 
 export default GithubUser;
 
-customElements.define("github-user", GithubUser);
+if (!customElements.get("github-user")) {
+  customElements.define("github-user", GithubUser);
+}

@@ -28,4 +28,6 @@ export class GithubStatus extends HTMLElement {
 
 export default GithubStatus;
 
-customElements.define("github-status", GithubStatus);
+if (!customElements.get("github-status")) {
+  customElements.define("github-status", GithubStatus);
+}
