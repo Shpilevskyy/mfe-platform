@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "prepare": "npm run build --workspace=mfe-common",
     "start": "concurrently \"npm run start --workspace=mfe-common\" \"npm run start --workspace=placeholder-page\" \"npm run start --workspace=github-info\" \"npm run start --workspace=shell\"",
     "build": "concurrently \"npm run build --workspace=mfe-common\" \"npm run build --workspace=placeholder-page\" \"npm run build --workspace=github-info\" \"npm run build --workspace=shell\"",
     "dev": "concurrently \"npm run dev --workspace=mfe-common\" \"npm run dev --workspace=placeholder-page\" \"npm run dev --workspace=github-info\" \"npm run dev --workspace=shell\""

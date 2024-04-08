@@ -56,10 +56,10 @@ iframe-based, web-component-based, Framework-based (Rect, Vue, etc.), Webpack Mo
 - Responsible for loading and orchestrating the MFEs. Shared data and state management (Custom events).
 
 ## How to integrate Micro Frontends?
-- Build-Time integration (Old way)
+- Build-Time integration (Old way ?)
 - Run-Time integration
   - Server-Side Integration
-  - Client-Side Integration
+  - Client-Side Integration (Current one, using ESM and importmap) https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap
 
 ## Possible issues
 - Code duplication (Move shared code to a shared library)
