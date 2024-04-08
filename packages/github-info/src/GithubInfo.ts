@@ -17,8 +17,6 @@ export class GithubInfo extends MFEComponent {
     this.updateStore({ githubUsername });
   }
 
-  getButtonClass() {}
-
   staticRender() {
     this.innerHTML = `
       <h2>Github Info</h2>
