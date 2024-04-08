@@ -17,7 +17,7 @@ export class GithubUser extends MFEComponent {
   async render(store: MfeStoreType) {
     if (!store?.githubUsername) {
       this.innerHTML =
-        "<h2>Please provide a username of any GitHub account to be able to render information</h2>";
+        "<h2>No GitHub username provided to fetch user info</h2>";
 
       return;
     }
