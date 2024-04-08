@@ -1,10 +1,10 @@
-export class GithubStatus extends HTMLElement {
+import { MFEComponent } from "mfe-common";
+
+export class GithubStatus extends MFEComponent {
+  tagName = "github-status";
+
   constructor() {
     super();
-  }
-
-  connectedCallback() {
-    void this.render();
   }
 
   async fetchGithubStatus() {
@@ -19,11 +19,11 @@ export class GithubStatus extends HTMLElement {
     const data = await this.fetchGithubStatus();
 
     this.innerHTML = `
-      <h1>Status: ${data.status.description}</h1>
+      <h2>Status: ${data.status.description}</h2>
       <p>Indicator: ${data.status.indicator}</p>
       <p>Time zone: ${data.page.time_zone}</p>
       <style>
-        h1 {
+        h2 {
             color: green;
         }   
       </style>
@@ -33,6 +33,4 @@ export class GithubStatus extends HTMLElement {
 
 export default GithubStatus;
 
-if (!customElements.get("github-status")) {
-  customElements.define("github-status", GithubStatus);
-}
+GithubStatus.registerComponentName("github-status");

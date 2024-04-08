@@ -1,13 +1,10 @@
-import { MfeContext, MfeStoreType } from "mfe-common";
+import { MFEComponent, MfeStoreType } from "mfe-common";
 
-export class GithubUser extends HTMLElement {
-  private context: MfeContext;
+export class GithubUser extends MFEComponent {
+  tagName = "github-user";
 
   constructor() {
     super();
-
-    this.context = MfeContext.getInstance();
-    this.context.subscribe("GithubUser", this.render.bind(this));
   }
 
   async getGithubUser(username: string) {
@@ -20,9 +17,9 @@ export class GithubUser extends HTMLElement {
   }
 
   async render(store: MfeStoreType) {
-    if (!store.githubUsername) {
+    if (!store?.githubUsername) {
       this.innerHTML =
-        "<h1>Please provide a username of any GitHub account to be able to render his information</h1>";
+        "<h2>Please provide a username of any GitHub account to be able to render information</h2>";
 
       return;
     }
@@ -30,27 +27,18 @@ export class GithubUser extends HTMLElement {
     const data = await this.getGithubUser(store.githubUsername);
 
     this.innerHTML = `
-        <h1>${data.name}</h1>
-        <img src="${data.avatar_url}" alt="${data.name}" />
-        <style>
-          h1 {
-              color: gold;
-          }   
-      </style>
+      <sl-card class="card-image">
+        <img
+          slot="image"
+          src="${data.avatar_url}" 
+          alt="${data.name}"
+        />
+        ${data.name}
+      </sl-card>
     `;
-  }
-
-  connectedCallback() {
-    void this.render(this.context.store);
-  }
-
-  disconnectedCallback() {
-    this.context.unsubscribe("GithubUser");
   }
 }
 
 export default GithubUser;
 
-if (!customElements.get("github-user")) {
-  customElements.define("github-user", GithubUser);
-}
+GithubUser.registerComponentName("github-user");

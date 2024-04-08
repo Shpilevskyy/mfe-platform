@@ -32,7 +32,6 @@ export class MfeContext {
   }
 
   private handleStorageEvent = (event: StorageEvent) => {
-    console.log(1, event);
     if (event.key === MfeStoreStorageKey) {
       const store = event.newValue ? JSON.parse(event.newValue) : this.store;
 

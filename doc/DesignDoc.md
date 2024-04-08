@@ -48,6 +48,9 @@ Shadow DOM? CSS Modules? CSS-in-JS?
 
 
 ## Research
+Without bundler, it's hard to import/export files with ts extension, as tsc compiler will not convert them into js extension.
+So we use js extension instead `export * from "./GithubUser.js";` Typescript works fine with this solution.
+https://www.typescriptlang.org/docs/handbook/modules/theory.html
 
 ## How to Implement Micro-frontend Architecture?
 iframe-based, web-component-based, Framework-based (Rect, Vue, etc.), Webpack Module Federation.
@@ -59,7 +62,9 @@ iframe-based, web-component-based, Framework-based (Rect, Vue, etc.), Webpack Mo
 - Build-Time integration (Old way ?)
 - Run-Time integration
   - Server-Side Integration
-  - Client-Side Integration (Current one, using ESM and importmap) https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap
+  - Client-Side Integration (Current one, using ESM and importmap) 
+    - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap
+    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta/resolve
 
 ## Possible issues
 - Code duplication (Move shared code to a shared library)

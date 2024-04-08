@@ -62,10 +62,10 @@ class MfeRouter extends HTMLElement {
       : "/";
     const route = this.routes.find((r) => r.path && path.startsWith(r.path));
 
-    if (route?.host && this.outlet?.shadowRoot) {
+    if (route?.host) {
       await import(route.host);
 
-      this.outlet.shadowRoot.innerHTML = `<${route.component}></${route.component}>`;
+      this.outlet!.shadowRoot!.innerHTML = `<${route.component}></${route.component}>`;
     }
   }
 }

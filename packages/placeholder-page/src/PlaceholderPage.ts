@@ -9,7 +9,7 @@ export class PlaceholderPage extends HTMLElement {
 
   render() {
     this.innerHTML = `
-        <h1>Placeholder page</h1>
+        <h2>Placeholder page</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus</p>
     `;
   }
