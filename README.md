@@ -10,6 +10,6 @@
 
 ## Project structure:
 * `packages/github-info` - Micro-frontend that shows the user's GitHub information and GitHub status
-* `packages/home-assignment` - Micro-frontend with placeholder content
+* `packages/placeholder-page` - Micro-frontend with placeholder content
 * `packages/mfe-common` - Shared code between micro-frontends (Imports via importmap)
 * `packages/shell` - Container app that loads the micro-frontends

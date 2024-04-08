@@ -27,7 +27,7 @@ export class MfeShell extends HTMLElement {
       <main style="padding: 20px">
         <mfe-router>
           <mfe-route path="/github-info" component="github-info" host="http://localhost:3002/dist/GithubInfo.js"></mfe-route>
-          <mfe-route path="/" component="home-assignment" host="http://localhost:3001/dist/HomeAssignment.js"></mfe-route>
+          <mfe-route path="/" component="placeholder-page" host="http://localhost:3001/dist/PlaceholderPage.js"></mfe-route>
           <mfe-outlet></mfe-outlet>
         </mfe-router>
       </main>
