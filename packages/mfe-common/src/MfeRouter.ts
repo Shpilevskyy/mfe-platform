@@ -1,9 +1,17 @@
 class MfeRoute extends HTMLElement {
+  path: string = "";
+  component: string = "";
+  host: string = "";
+
   static get observedAttributes() {
     return ["path", "component", "host"];
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
+  attributeChangedCallback(
+    name: "path" | "component" | "host",
+    oldValue: string,
+    newValue: string,
+  ) {
     this[name] = newValue;
   }
 }
@@ -17,7 +25,11 @@ class MfeRouter extends HTMLElement {
     super();
   }
 
-  get routes() {
+  get routes(): Array<{
+    path: string | null;
+    host: string | null;
+    component: string | null;
+  }> {
     return Array.from(this.querySelectorAll("mfe-route"))
       .filter((node) => node.parentNode === this)
       .map((r) => ({
@@ -32,28 +44,28 @@ class MfeRouter extends HTMLElement {
   }
 
   _handlePopstate = () => {
-    this.render();
+    void this.render();
   };
 
   connectedCallback() {
     window.addEventListener("popstate", this._handlePopstate);
-    this.render();
+    void this.render();
   }
 
   disconnectedCallback() {
     window.removeEventListener("popstate", this._handlePopstate);
   }
 
-  render() {
+  async render() {
     const path = window.location.hash.length
       ? window.location.hash.replace("#", "/")
       : "/";
-    const route = this.routes.find((r) => path.startsWith(r.path));
+    const route = this.routes.find((r) => r.path && path.startsWith(r.path));
 
-    if (route) {
-      import(route.host).then(() => {
-        this.outlet.shadowRoot.innerHTML = `<${route.component}></${route.component}>`;
-      });
+    if (route?.host && this.outlet?.shadowRoot) {
+      await import(route.host);
+
+      this.outlet.shadowRoot.innerHTML = `<${route.component}></${route.component}>`;
     }
   }
 }

@@ -11,7 +11,7 @@ export const MfeStoreStorageKey = "mfe-store";
 export class MfeContext {
   private static instance: MfeContext;
   store: MfeStoreType = MfeStoreDefault;
-  subscribers: Array<(context: MfeStoreType) => void> = [];
+  subscribers: Record<string, (context: MfeStoreType) => void> = {};
 
   private constructor() {
     const store = localStorage.getItem(MfeStoreStorageKey);
@@ -32,10 +32,11 @@ export class MfeContext {
   }
 
   private handleStorageEvent = (event: StorageEvent) => {
+    console.log(1, event);
     if (event.key === MfeStoreStorageKey) {
       const store = event.newValue ? JSON.parse(event.newValue) : this.store;
 
-      this.subscribers.forEach((callback) => callback(store));
+      Object.values(this.subscribers).forEach((callback) => callback(store));
     }
   };
 
@@ -52,13 +53,11 @@ export class MfeContext {
     );
   };
 
-  subscribe = (callback: (context: MfeStoreType) => void) => {
-    this.subscribers.push(callback);
+  subscribe = (name: string, callback: (context: MfeStoreType) => void) => {
+    this.subscribers[name] = callback;
   };
 
-  unsubscribe = (callback: (context: MfeStoreType) => void) => {
-    this.subscribers = this.subscribers.filter(
-      (subscriber) => subscriber !== callback,
-    );
+  unsubscribe = (name: string) => {
+    delete this.subscribers[name];
   };
 }

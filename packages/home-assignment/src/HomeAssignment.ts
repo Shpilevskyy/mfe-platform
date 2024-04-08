@@ -10,8 +10,7 @@ export class HomeAssignment extends HTMLElement {
   render() {
     this.innerHTML = `
         <h1>Home Assignment</h1>
-        <p>Please provide a username of any GitHub account to be able to render his information</p>
-        
+        <p>Placeholder page for demo</p>
     `;
   }
 }

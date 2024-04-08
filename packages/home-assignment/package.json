@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
-    "start": "http-server -p 3001 --cors"
+    "start": "http-server -o -p 3001 --cors"
   },
   "author": "",
   "license": "ISC",

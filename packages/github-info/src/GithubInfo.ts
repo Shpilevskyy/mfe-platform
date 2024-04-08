@@ -11,7 +11,7 @@ export class GithubInfo extends HTMLElement {
     this.context = MfeContext.getInstance();
   }
 
-  onInputChange(event: Event) {
+  private onInputChange(event: Event) {
     const target = event.target as HTMLInputElement;
     const githubUsername = target.value;
 
@@ -46,7 +46,7 @@ export class GithubInfo extends HTMLElement {
     const input = this.querySelector("#githubUsername") as HTMLInputElement;
 
     input.value = this.context.store.githubUsername || "";
-    input?.addEventListener("input", this.onInputChange.bind(this));
+    input.addEventListener("input", this.onInputChange.bind(this));
   }
 }
 
