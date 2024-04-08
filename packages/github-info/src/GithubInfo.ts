@@ -1,5 +1,3 @@
-import "./GithubStatus.js";
-import "./GithubUser.js";
 import { MFEComponent, MfeStoreType } from "mfe-common";
 
 const githubStatusModuleUrl = import.meta.resolve("./GithubStatus.js");
