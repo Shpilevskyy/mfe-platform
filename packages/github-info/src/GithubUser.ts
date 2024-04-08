@@ -22,7 +22,7 @@ export class GithubUser extends HTMLElement {
   async render(store: MfeStoreType) {
     if (!store.githubUsername) {
       this.innerHTML =
-        "<h1>Please provide a username of any GitHub account to be able to render his information in home page</h1>";
+        "<h1>Please provide a username of any GitHub account to be able to render his information</h1>";
 
       return;
     }

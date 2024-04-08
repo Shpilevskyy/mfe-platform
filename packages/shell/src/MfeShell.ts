@@ -17,7 +17,7 @@ export class MfeShell extends HTMLElement {
       <aside style="padding: 20px">
         <ul>
           <li>
-            <a href="#">Home Assignment</a>
+            <a href="#">Placeholder page</a>
           </li>
           <li>
             <a href="#github-info">GitHub User info</a>
