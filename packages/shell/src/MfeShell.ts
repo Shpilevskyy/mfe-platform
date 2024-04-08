@@ -16,10 +16,10 @@ export class MfeShell extends HTMLElement {
       </header>
       <sl-tab-group>
         <sl-tab>
-          <sl-button href="#">Placeholder page</sl-button>
+          <mfe-link-button href="#">Placeholder page</mfe-link-button>
         </sl-tab>
         <sl-tab>
-          <sl-button href="#github-info/status">GitHub User info</sl-button>
+          <mfe-link-button href="#github-info/user">GitHub User info</mfe-link-button>
         </sl-tab>
       </sl-tab-group>
       <main style="padding: 20px">

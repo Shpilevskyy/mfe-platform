@@ -17,6 +17,8 @@ export class GithubInfo extends MFEComponent {
     this.updateStore({ githubUsername });
   }
 
+  getButtonClass() {}
+
   staticRender() {
     this.innerHTML = `
       <h2>Github Info</h2>
@@ -30,15 +32,15 @@ export class GithubInfo extends MFEComponent {
 
       <sl-tab-group>
         <sl-tab>
-          <sl-button href="#github-info/status">Github Status</sl-button>
+          <mfe-link-button href="#github-info/user">Github User</mfe-link-button>
         </sl-tab>
         <sl-tab>
-          <sl-button href="#github-info/user">Github User</sl-button>
+          <mfe-link-button href="#github-info/status">Github Status</mfe-link-button>
         </sl-tab>
       </sl-tab-group>
       <mfe-router>
-        <mfe-route path="/github-info/status" component="github-status" host="${githubStatusModuleUrl}"></mfe-route>
         <mfe-route path="/github-info/user" component="github-user" host="${githubUserModuleUrl}"></mfe-route>
+        <mfe-route path="/github-info/status" component="github-status" host="${githubStatusModuleUrl}"></mfe-route>
         <mfe-outlet></mfe-outlet>
       </mfe-router>
       <style>

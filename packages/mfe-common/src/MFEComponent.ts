@@ -1,5 +1,10 @@
 import { MfeContext, MfeStoreType } from "./MfeContext.js";
 
+/**
+ * Base class for all Micro Frontend Components
+ * - automatically subscribes to the store and call render method when the store is updated
+ * - allows to easy register the component as a custom element based on
+ */
 export abstract class MFEComponent extends HTMLElement {
   private context: MfeContext;
 

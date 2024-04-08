@@ -1,11 +1,9 @@
-class MfeRoute extends HTMLElement {
+export class MfeRoute extends HTMLElement {
   path: string = "";
   component: string = "";
   host: string = "";
 
-  static get observedAttributes() {
-    return ["path", "component", "host"];
-  }
+  static observedAttributes = ["path", "component", "host"];
 
   attributeChangedCallback(
     name: "path" | "component" | "host",
@@ -20,7 +18,7 @@ if (!customElements.get("mfe-route")) {
   customElements.define("mfe-route", MfeRoute);
 }
 
-class MfeRouter extends HTMLElement {
+export class MfeRouter extends HTMLElement {
   constructor() {
     super();
   }
@@ -67,6 +65,12 @@ class MfeRouter extends HTMLElement {
 
       this.outlet!.shadowRoot!.innerHTML = `<${route.component}></${route.component}>`;
     }
+  }
+
+  static isRouteActive(path: string) {
+    if (path === "#" && !window.location.hash) return true;
+
+    return window.location.hash === path;
   }
 }
 

@@ -1,3 +1,6 @@
+/**
+ * Simple component that does not extend MFEComponent as it does not need to subscribe to the store
+ */
 export class PlaceholderPage extends HTMLElement {
   constructor() {
     super();
