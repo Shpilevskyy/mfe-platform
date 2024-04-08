@@ -1,7 +1,6 @@
 import { MfeContext, MfeStoreType } from "./MfeContext.js";
 
 export abstract class MFEComponent extends HTMLElement {
-  static tagName: string;
   private context: MfeContext;
 
   protected constructor() {
@@ -23,15 +22,18 @@ export abstract class MFEComponent extends HTMLElement {
   abstract render(store?: MfeStoreType): void;
 
   static register() {
-    if (!this.tagName) {
+    if (!this.name) {
       throw new Error("tagName must be defined");
     }
 
-    if (!customElements.get(this.tagName)) {
-      customElements.define(
-        this.tagName,
-        this as unknown as CustomElementConstructor,
-      );
+    // convert CamelCase to kebab-case
+    const name = this.name
+      .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+      .toLowerCase()
+      .replace(/^-/, "");
+
+    if (!customElements.get(name)) {
+      customElements.define(name, this as unknown as CustomElementConstructor);
     }
   }
 

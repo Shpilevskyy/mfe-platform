@@ -61,5 +61,4 @@ export class GithubInfo extends MFEComponent {
 
 export default GithubInfo;
 
-GithubInfo.tagName = "github-info";
 GithubInfo.register();

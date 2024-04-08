@@ -31,5 +31,4 @@ export class GithubStatus extends MFEComponent {
 
 export default GithubStatus;
 
-GithubStatus.tagName = "github-status";
 GithubStatus.register();

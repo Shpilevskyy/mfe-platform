@@ -39,5 +39,4 @@ export class GithubUser extends MFEComponent {
 
 export default GithubUser;
 
-GithubUser.tagName = "github-user";
 GithubUser.register();
