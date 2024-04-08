@@ -1,8 +1,6 @@
 import { MFEComponent } from "mfe-common";
 
 export class GithubStatus extends MFEComponent {
-  tagName = "github-status";
-
   constructor() {
     super();
   }
@@ -33,4 +31,5 @@ export class GithubStatus extends MFEComponent {
 
 export default GithubStatus;
 
-GithubStatus.registerComponentName("github-status");
+GithubStatus.tagName = "github-status";
+GithubStatus.register();

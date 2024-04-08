@@ -1,8 +1,6 @@
 import { MFEComponent, MfeStoreType } from "mfe-common";
 
 export class GithubUser extends MFEComponent {
-  tagName = "github-user";
-
   constructor() {
     super();
   }
@@ -41,4 +39,5 @@ export class GithubUser extends MFEComponent {
 
 export default GithubUser;
 
-GithubUser.registerComponentName("github-user");
+GithubUser.tagName = "github-user";
+GithubUser.register();

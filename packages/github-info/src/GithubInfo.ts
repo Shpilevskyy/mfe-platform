@@ -4,8 +4,6 @@ const githubStatusModuleUrl = import.meta.resolve("./GithubStatus.js");
 const githubUserModuleUrl = import.meta.resolve("./GithubUser.js");
 
 export class GithubInfo extends MFEComponent {
-  tagName = "github-info";
-
   constructor() {
     super();
 
@@ -63,4 +61,5 @@ export class GithubInfo extends MFEComponent {
 
 export default GithubInfo;
 
-GithubInfo.registerComponentName("github-info");
+GithubInfo.tagName = "github-info";
+GithubInfo.register();

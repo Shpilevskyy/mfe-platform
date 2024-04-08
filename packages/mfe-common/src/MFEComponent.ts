@@ -1,7 +1,7 @@
 import { MfeContext, MfeStoreType } from "./MfeContext.js";
 
 export abstract class MFEComponent extends HTMLElement {
-  abstract tagName: string;
+  static tagName: string;
   private context: MfeContext;
 
   protected constructor() {
@@ -22,14 +22,14 @@ export abstract class MFEComponent extends HTMLElement {
   // This method should be implemented by subclasses
   abstract render(store?: MfeStoreType): void;
 
-  static registerComponentName(tagName: string) {
-    if (!tagName) {
+  static register() {
+    if (!this.tagName) {
       throw new Error("tagName must be defined");
     }
 
-    if (!customElements.get(tagName)) {
+    if (!customElements.get(this.tagName)) {
       customElements.define(
-        tagName,
+        this.tagName,
         this as unknown as CustomElementConstructor,
       );
     }
